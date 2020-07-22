@@ -7,8 +7,9 @@ It gets the camera frames, make JNI calls with its gray matrices references as p
 
 It works with Android Studio 3+
 
-Last included OpenCV version: 3.4
+Last included OpenCV version: 4.4.0
 
+Note: Original from: https://github.com/leadrien/opencv_native_androidstudio
 
 
 Usage
@@ -17,12 +18,20 @@ Usage
 Here is how to use this project to run native OpenCV code.
 
 * Make sure you have Android SDK up to date, with NDK installed and CMake
-* Download latest OpenCV SDK for Android from OpenCV.org and decompress the zip file.
+* Download latest OpenCV SDK for Android from OpenCV.org and decompress the zip file (v4.4.0).
 * Clone this project
 * Create a symlink named `jniLibs` in `app/src/main` that points to `YOUR_OPENCV_SDK/sdk/native/libs`
 * In `app/CMakeLists.txt` change line 9 to points to `YOUR_OPENCV_SDK/sdk/native/jni/include`
 * Sync gradle
 * Run the application
+
+
+* You may need to sync java-based classes if you upgrade the OpenCV version: 
+```
+rsync -av --delete $OPENCV_SDK/sdk/java/res/ openCVLibrary/src/main/res/ 
+rsync -av --delete $OPENCV_SDK/sdk/java/src/ openCVLibrary/src/main/java/
+ln -s $OPENCV_SDK/sdk/native/jni/include app/src/main/jniLibs
+```
 
 
 How to create the native OpenCV project from scratch

@@ -6,8 +6,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 # OpenCV
-#include_directories($ENV{OPENCV_SDK}/sdk/native/jni/include)  # TODO: change this acording to your location
-include_directories(/Users/dusanklinec/workspace/OpenCV-android-sdk/sdk/native/jni/include)
+include_directories($ENV{OPENCV_SDK}/sdk/native/jni/include)  # TODO: change this acording to your location
 add_library( lib_opencv SHARED IMPORTED )
 set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libopencv_java4.so)
 
